@@ -1,5 +1,5 @@
 baseURL = "https://<tmp>"
-title = "<tmp>"
+title = "Julian Dobrosielski"
 theme = "etch"
 languageCode = "en-US"
 enableInlineShortcodes = true
@@ -8,7 +8,7 @@ pygmentsUseClasses = true
 
 [params]
   description = "Junior DevOps candidate"
-  copyright = "Copyright © 2021 <tmp>"
+  copyright = "Copyright © 2021 Julian Dobrosielski"
   dark = "off"
   highlight = true
 

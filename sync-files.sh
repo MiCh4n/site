@@ -55,7 +55,7 @@ create_lock "${cmd_locking}"
 cmd_git_pull="git pull"
 cmd_hugo="hugo"
 cmd_pwd=$(pwd)
-cmd_rsync="rsync -av ${cmd_pwd}/src/public/ /var/www/tmp.bieda.it"
+cmd_rsync="rsync -av ${cmd_pwd}/src/public/ /var/www/tmpski.toadres.pl"
 cmd_rm_public="rm -r ${cmd_pwd}/src/public"
 reload_nginx="sudo systemctl reload nginx.service"
 ## Script body

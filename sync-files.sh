@@ -106,7 +106,7 @@ ${reload_nginx} || {
     	exit 9
 }
 ## end body
-if [-d "${lock_file_or_dir_webhook}"] || [-f "${lock_file_or_dir_webhook}"]; then
+if [ -d "${lock_file_or_dir_webhook}" ] || [ -f "${lock_file_or_dir_webhook}" ]; then
 	remove_lock "${cmd_unlocking_webhook}"
 fi
 remove_lock "${cmd_unlocking}"

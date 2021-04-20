@@ -1,4 +1,4 @@
-baseURL = "https://tmpski.toadres.pl"
+baseURL = "http://tmpski.toadres.pl"
 title = "Julian Dobrosielski"
 theme = "etch"
 languageCode = "en-US"

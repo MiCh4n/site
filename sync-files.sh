@@ -52,13 +52,12 @@ create_lock "${cmd_locking}"
 
 
 ## Important variables
-cmd_pwd=$(pwd)
-cmd_hugo_dir="cd ${cmd_pwd}/src"
-cmd_rsync="rsync -av ${cmd_pwd}/src/public/ /var/www/tmpski.toadres.pl"
-cmd_rm_public="rm -r ${cmd_pwd}/src/public"
+cmd_hugo_dir="cd /var/repo-site/site/src"
+cmd_rsync="rsync -av /var/repo-site/site/src/public/ /var/www/tmpski.toadres.pl"
+cmd_rm_public="rm -r /var/repo-site/site/src/public"
 reload_nginx="sudo systemctl reload nginx.service"
 ## Script body
-if [ -d "$cmd_pwd/src/public" ]; then
+if [ -d "/var/repo-site/site/src/public" ]; then
 	${cmd_rm_public} || {
 		printf "Cannot remove public --> exiting" >&2 ;
 	  	remove_lock "${cmd_unlocking}"

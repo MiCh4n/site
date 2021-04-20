@@ -53,8 +53,8 @@ create_lock "${cmd_locking}"
 
 ## Important variables
 cmd_git_pull="git pull"
-cmd_hugo="hugo"
 cmd_pwd=$(pwd)
+cmd_hugo_dir="cd ${cmd_pwd}/src"
 cmd_rsync="rsync -av ${cmd_pwd}/src/public/ /var/www/tmpski.toadres.pl"
 cmd_rm_public="rm -r ${cmd_pwd}/src/public"
 reload_nginx="sudo systemctl reload nginx.service"
@@ -73,7 +73,7 @@ ${cmd_git_pull} || {
     	exit 5
 }
 
-${cmd_hugo} || {
+( ${cmd_hugo_dir} && hugo ) || {
 	printf "Cannot use hugo --> exiting" >&2 ;
   	remove_lock "${cmd_unlocking}"
     	exit 6

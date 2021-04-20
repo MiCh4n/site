@@ -52,10 +52,8 @@ create_lock "${cmd_locking}"
 
 
 ## Important variables
-cmd_git_pull="git pull"
 cmd_pwd=$(pwd)
 cmd_hugo_dir="cd ${cmd_pwd}/src"
-cmd_pull_dir="cd ${cmd_pwd}"
 cmd_rsync="rsync -av ${cmd_pwd}/src/public/ /var/www/tmpski.toadres.pl"
 cmd_rm_public="rm -r ${cmd_pwd}/src/public"
 reload_nginx="sudo systemctl reload nginx.service"
@@ -67,12 +65,6 @@ if [ -d "$cmd_pwd/src/public" ]; then
 	    	exit 4
 	}
 fi
-
-(${cmd_pull_dir} && ${cmd_git_pull}) || {
-	printf "Cannot pull repository --> exiting" >&2 ;
-  	remove_lock "${cmd_unlocking}"
-    	exit 5
-}
 
 ( ${cmd_hugo_dir} && hugo ) || {
 	printf "Cannot use hugo --> exiting" >&2 ;

@@ -63,7 +63,7 @@ if [ -d "/var/repo-site/site/src/public" ]; then
 	${cmd_rm_public} || {
 		printf "Cannot remove public --> exiting" >&2 ;
 	  	remove_lock "${cmd_unlocking}"
-		if [-d "${lock_file_or_dir_webhook}"] || [-f "${lock_file_or_dir_webhook}"]; then
+		if [ -d "${lock_file_or_dir_webhook}" ] || [ -f "${lock_file_or_dir_webhook}" ]; then
 			remove_lock "${cmd_unlocking_webhook}"
 		fi
 	    	exit 4
@@ -73,7 +73,7 @@ fi
 ( ${cmd_hugo_dir} && hugo ) || {
 	printf "Cannot use hugo --> exiting" >&2 ;
   	remove_lock "${cmd_unlocking}"
-        if [-d "${lock_file_or_dir_webhook}"] || [-f "${lock_file_or_dir_webhook}"]; then
+        if [ -d "${lock_file_or_dir_webhook}" ] || [ -f "${lock_file_or_dir_webhook}" ]; then
         	remove_lock "${cmd_unlocking_webhook}"
         fi
     	exit 6
@@ -82,25 +82,25 @@ fi
 ${cmd_rsync} || {
 	printf "Cannot rsync files --> exiting" >&2 ;
   	remove_lock "${cmd_unlocking}"
-	if [-d "${lock_file_or_dir_webhook}"] || [-f "${lock_file_or_dir_webhook}"]; then
+	if [ -d "${lock_file_or_dir_webhook}" ] || [ -f "${lock_file_or_dir_webhook}" ]; then
 		remove_lock "${cmd_unlocking_webhook}"
 	fi
     	exit 7
 }
 
 ${cmd_rm_public} || {
-	printf "Cannot create secret --> exiting" >&2 ;
+	printf "Cannot remove public dir --> exiting" >&2 ;
   	remove_lock "${cmd_unlocking}"
-	if [-d "${lock_file_or_dir_webhook}"] || [-f "${lock_file_or_dir_webhook}"]; then
+	if [ -d "${lock_file_or_dir_webhook}" ] || [ -f "${lock_file_or_dir_webhook}" ]; then
 		remove_lock "${cmd_unlocking_webhook}"
 	fi
 	exit 8
 }
 
 ${reload_nginx} || {
-	printf "Cannot create secret --> exiting" >&2 ;
+	printf "Cannot reload nginx --> exiting" >&2 ;
   	remove_lock "${cmd_unlocking}"
-	if [-d "${lock_file_or_dir_webhook}"] || [-f "${lock_file_or_dir_webhook}"]; then
+	if [ -d "${lock_file_or_dir_webhook}" ] || [ -f "${lock_file_or_dir_webhook}" ]; then
 		remove_lock "${cmd_unlocking_webhook}"
 	fi
     	exit 9
@@ -110,4 +110,3 @@ if [-d "${lock_file_or_dir_webhook}"] || [-f "${lock_file_or_dir_webhook}"]; the
 	remove_lock "${cmd_unlocking_webhook}"
 fi
 remove_lock "${cmd_unlocking}"
-wq

@@ -14,13 +14,6 @@ pygmentsUseClasses = true
 
 [menu]
   [[menu.main]]
-    identifier = "posts"
-    name = "home"
-    title = "posts"
-    url = "/"
-    weight = 10
-
-  [[menu.main]]
     identifier = "CV"
     name = "CV"
     title = "CV"

@@ -3,7 +3,7 @@ title: "Site"
 date: 2021-04-30T11:33:37+02:00
 draft: false
 ---
-Repository link -> [https://github.com/MiCh4n/site](https://github.com/MiCh4n/site)
+Repository link → [https://github.com/MiCh4n/site](https://github.com/MiCh4n/site)
 
 Here is source code of my website :)
 I use *Hugo* to generate html from markdown files

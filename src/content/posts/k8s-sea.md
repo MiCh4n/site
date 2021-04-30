@@ -3,7 +3,7 @@ title: "K8s-Sea"
 date: 2021-04-30T09:59:45+02:00
 draft: false
 ---
-Repository link -> [https://github.com/MiCh4n/k8s-sea](https://github.com/MiCh4n/k8s-sea)
+Repository link → [https://github.com/MiCh4n/k8s-sea](https://github.com/MiCh4n/k8s-sea)
 ## Two applications written in *Go* deployed on kubernetes cluster
 * ### Pirates expose API on port 6000
 * ### Sea fetch data from pirates endpoint using *Consul* to establish HTTPS connection between them, and also expose HTTP server on port 5000

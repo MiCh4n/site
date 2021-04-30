@@ -3,7 +3,7 @@ title: "K3s on Aws"
 date: 2021-04-30T11:26:51+02:00
 draft: false
 ---
-Repository link -> [https://github.com/MiCh4n/k3s-on-aws](https://github.com/MiCh4n/k3s-on-aws)
+Repository link → [https://github.com/MiCh4n/k3s-on-aws](https://github.com/MiCh4n/k3s-on-aws)
 # Deploy k3s on EC2 AWS
 ### Provision infrastructure on AWS using *Terraform*
 * #### Creates:

@@ -3,7 +3,7 @@ title: "Fizz Buzz"
 date: 2021-04-30T10:27:47+02:00
 draft: false
 ---
-Repository link -> [https://github.com/MiCh4n/fizz-buzz](https://github.com/MiCh4n/fizz-buzz)
+Repository link → [https://github.com/MiCh4n/fizz-buzz](https://github.com/MiCh4n/fizz-buzz)
 
 Here are fizzbuzzes in *[Python](https://github.com/MiCh4n/fizz-buzz/blob/main/fizzbuzzes/main.py)*, *[Go](https://github.com/MiCh4n/fizz-buzz/blob/main/fizzbuzzes/main.go)*, *[Bash](https://github.com/MiCh4n/fizz-buzz/blob/main/fizzbuzzes/main.sh)*
 

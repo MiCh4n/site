@@ -3,7 +3,7 @@ title: "Crud Ec2"
 date: 2021-04-30T11:30:37+02:00
 draft: false
 ---
-Repository link -> [https://github.com/MiCh4n/crud-ec2](https://github.com/MiCh4n/crud-ec2)
+Repository link → [https://github.com/MiCh4n/crud-ec2](https://github.com/MiCh4n/crud-ec2)
 
 #### Two EC2 instances on AWS with custom AMIs made with Packer each one with their roles, security groups *27017* for mongodb instance, *7777* for api instance (ssh enabled on both)
 

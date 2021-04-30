@@ -3,7 +3,7 @@ title: "Jenkins as Code"
 date: 2021-04-30T10:17:30+02:00
 draft: false
 ---
-Repository link -> [https://github.com/MiCh4n/jenkins-as-code](https://github.com/MiCh4n/jenkins-as-code)
+Repository link → [https://github.com/MiCh4n/jenkins-as-code](https://github.com/MiCh4n/jenkins-as-code)
 ## Everything related to Jenkins as code that I need in my projects
 Jenkinsfiles, theme, deploying to kubernetes cluster etc...
 ___

@@ -13,7 +13,7 @@ Repository link → [https://github.com/MiCh4n/crud-ec2](https://github.com/MiCh
 **Secrets** for Jenkins to access AWS are provided using bash script to generate them from *~.aws/credentials*, makes temporary yaml files to apply them to kubernetes on which Jenkins is running. 
 #### App is simple webserver made with Go Fiber framework that expose API and stores data in other instance with mongodb
 Uses key/value on endpoints
-___
+
  key | value
 -------------|---------
 name          | string

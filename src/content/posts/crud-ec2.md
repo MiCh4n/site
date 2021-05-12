@@ -1,6 +1,6 @@
 ---
 title: "Crud Ec2"
-date: 2021-04-30T11:30:37+02:00
+date: 2021-04-30T18:19:16+02:00
 draft: false
 ---
 Repository link → [https://github.com/MiCh4n/crud-ec2](https://github.com/MiCh4n/crud-ec2)

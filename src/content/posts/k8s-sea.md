@@ -1,6 +1,6 @@
 ---
 title: "K8s-Sea"
-date: 2021-04-30T09:59:45+02:00
+date: 2021-04-30T18:17:01+02:00
 draft: false
 ---
 Repository link → [https://github.com/MiCh4n/k8s-sea](https://github.com/MiCh4n/k8s-sea)

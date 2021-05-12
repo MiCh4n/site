@@ -5,7 +5,7 @@ draft: false
 ---
 Repository link → [https://github.com/MiCh4n/jenkins-as-code](https://github.com/MiCh4n/jenkins-as-code)
 ## Everything related to Jenkins as code that I need in my projects
-Jenkinsfiles, theme, deploying to kubernetes cluster etc...
+Theme, pipelines, deploying to kubernetes cluster etc...
 ___
 * **Helm chart** used to deploy Jenkins on k8s cluster with simple script to execute two commands
     ```

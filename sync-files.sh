@@ -55,7 +55,7 @@ create_lock "${cmd_locking}"
 
 ## Important variables
 cmd_hugo_dir="cd /var/repo-site/site/src"
-cmd_rsync="rsync -av /var/repo-site/site/src/public/ /var/www/tmpski.toadres.pl"
+cmd_rsync="rsync -av /var/repo-site/site/src/public/ /var/www/dobrosielski.icu"
 cmd_rm_public="rm -r /var/repo-site/site/src/public"
 reload_nginx="sudo systemctl reload nginx.service"
 ## Script body

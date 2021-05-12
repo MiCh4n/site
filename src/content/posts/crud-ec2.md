@@ -24,7 +24,7 @@ Terraform is used with *Terraspace framework* to separate DEV and PROD environme
  - /service/update
  - /service/delete
 
-Also in public is Bastion Host that listens on 22 for ssh with his public key.
+Also in public subnet is Bastion Host that listens on 22 for ssh with his public key.
 
 #### In private subnets are only autoscaling group with API instances, on which artifact is deployed using Jenkins and CodeDeploy and listens on 7777 port for ALB, 22 port for Bastion Host. Routing and security groups are configured to allow connection between private and database subnets, and HTTPS outbound to access S3/CodeDeploy with NAT Gateway
 

@@ -1,0 +1,61 @@
+---
+- apps: 
+    [webhook, grafana, prometheus, loki, promtail]
+
+- name: apt-get update
+  apt:
+    update_cache: yes
+
+# Add users with groups
+- name: Add User/Group
+  ansible.builtin.user:
+    name: "{{ item }}"
+    shell: /bin/false
+    createhome: no
+    groups: "{{ item }}"
+    append: yes
+  with_items:
+    - "{{ apps }}"
+
+# Create directories
+- name: Create /etc dirs for apps
+  ansible.builtin.file:
+    path: "/etc/{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  with_items:
+    - "{{ apps }}"
+
+- name: Create webhook dir for logs
+  ansible.builtin.file:
+    path: "/var/log/webhook"
+    state: directory
+    owner: webhok
+    group: webhook
+    mode: '0664'
+
+- name: Create repo-site
+  ansible.builtin.file:
+    path: "/var/repo-site"
+    state: directory
+    owner: webhook
+    group: webhook
+    mode: '0664'
+
+- name: Create /opt/webhook-scripts
+  ansible.builtin.file:
+    path: "/opt/webook-scripts"
+    state: directory
+    owner: webhook
+    group: webhook
+    mode: '0664'
+
+- name: Create dobrosielski.icu dir
+  ansible.builtin.file:
+    path: "/var/www/dobrosielski.icu"
+    state: directory
+    owner: root
+    group: webhook
+    mode: '0774'

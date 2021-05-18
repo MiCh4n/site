@@ -1,0 +1,40 @@
+---
+- name: Install nginx
+  apt:
+    name: nginx
+    state: latest
+
+- name: Copy nginx.conf
+  ansible.builtin.copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+
+- name: Copy secure.conf
+  ansible.builtin.copy:
+    src: secure.conf
+    dest: /etc/nginx/conf.d/secure.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Copy dobrosielski.icu.conf
+  ansible.builtin.copy:
+    src: dobrosielski.icu.conf
+    dest: /etc/nginx/sites-available/dobrosielski.icu.conf
+    owner: root
+    group: root 
+    mode: '0644'
+
+- name: Create a symbolic link to sites-enabled
+  ansible.builtin.file:
+    src: /etc/nginx/sites-available/dobrosielski.icu.conf
+    dest: /etc/nginx/sites-enabled/dobrosielski.icu.conf
+    owner: root
+    group: root
+    state: link
+  notify: restart nginx
+

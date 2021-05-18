@@ -1,0 +1,12 @@
+[Unit]
+Description=Small server for creating HTTP endpoints (hooks)
+Documentation=https://github.com/adnanh/webhook/
+ConditionPathExists=/etc/webhook/hooks.json
+
+[Service]
+User=webhook
+Group=webhook
+ExecStart=/usr/bin/webhook -nopanic -hooks /etc/webhook/hooks.json -logfile /var/log/webhook/webhooks.log
+
+[Install]
+WantedBy=multi-user.target

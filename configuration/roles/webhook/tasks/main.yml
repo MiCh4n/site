@@ -1,0 +1,23 @@
+---
+- name: Install webhook
+  apt:
+    name: webhook
+    state: latest
+
+- name: Generate hooks.json
+  ansible.builtin.template:
+    src: hooks.json
+    dest: /etc/webhook/hooks.json
+    owner: webhook
+    group: webhook
+    mode: '0644'
+
+- name: Copy webhook.service
+  ansible.builtin.copy:
+    src: hooks.json
+    dest: /etc/systemd/system/webhook.service
+    owner: root
+    group: root
+    mode: '0744'
+  notify: restart webhook
+

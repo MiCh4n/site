@@ -1,0 +1,9 @@
+---
+- name: restart loki/promtail services
+  systemd:
+    state: restarted
+    enabled: yes
+    name: "{{ item }}"
+  with_items:
+    - loki.service
+    - promtail.service

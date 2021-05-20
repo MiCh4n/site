@@ -1,6 +1,6 @@
 ---
 - name: restart webhook
-  ansible.builtin.systemd:
+  systemd:
     state: restarted
     enabled: yes
     name: webhook.service

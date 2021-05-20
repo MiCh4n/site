@@ -1,1 +1,5 @@
 ---
+
+# TODO: UFW [22, 80, webhook prob]
+# TODO: fail2ban conf
+# TODO: unattended updates&upgrades

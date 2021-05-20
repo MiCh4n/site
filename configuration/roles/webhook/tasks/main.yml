@@ -4,8 +4,13 @@
     name: webhook
     state: latest
 
+- name: Slurp secret
+  slurp:
+    src: /var/webhook_secret
+  register: secret
+
 - name: Generate hooks.json
-  ansible.builtin.template:
+  template:
     src: hooks.json
     dest: /etc/webhook/hooks.json
     owner: webhook
@@ -13,8 +18,8 @@
     mode: '0644'
 
 - name: Copy webhook.service
-  ansible.builtin.copy:
-    src: hooks.json
+  copy:
+    src: webhook.service
     dest: /etc/systemd/system/webhook.service
     owner: root
     group: root

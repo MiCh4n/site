@@ -11,7 +11,7 @@
           "match":
           {
             "type": "payload-hash-sha1",
-            "secret": "{{ lookup('file', '/root/webhook_secret.txt') }}",
+            "secret": "{{ secret }}",
             "parameter":
             {
               "source": "header",

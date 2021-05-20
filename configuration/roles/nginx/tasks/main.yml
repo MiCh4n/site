@@ -5,7 +5,7 @@
     state: latest
 
 - name: Copy nginx.conf
-  ansible.builtin.copy:
+  copy:
     src: nginx.conf
     dest: /etc/nginx/nginx.conf
     owner: root
@@ -14,7 +14,7 @@
     backup: yes
 
 - name: Copy secure.conf
-  ansible.builtin.copy:
+  copy:
     src: secure.conf
     dest: /etc/nginx/conf.d/secure.conf
     owner: root
@@ -22,7 +22,7 @@
     mode: '0644'
 
 - name: Copy dobrosielski.icu.conf
-  ansible.builtin.copy:
+  copy:
     src: dobrosielski.icu.conf
     dest: /etc/nginx/sites-available/dobrosielski.icu.conf
     owner: root
@@ -30,7 +30,7 @@
     mode: '0644'
 
 - name: Create a symbolic link to sites-enabled
-  ansible.builtin.file:
+  file:
     src: /etc/nginx/sites-available/dobrosielski.icu.conf
     dest: /etc/nginx/sites-enabled/dobrosielski.icu.conf
     owner: root

@@ -1,6 +1,6 @@
 ---
 - name: Copy trigger-build-site.sh
-  ansible.builtin.copy:
+  copy:
     src: trigger-build-site.sh
     dest: /opt/webhook-scripts/trigger-build-site.sh
     owner: webhook

@@ -1,14 +1,21 @@
 ---
-- apps: 
-    [webhook, grafana, prometheus, loki, promtail]
-
-- name: apt-get update
+- name: apt-get update && install zip
   apt:
+    name: zip
+    state: present
     update_cache: yes
 
 # Add users with groups
-- name: Add User/Group
-  ansible.builtin.user:
+- name: Add system group
+  group:
+    name: "{{ item }}"
+    system: true
+    state: present
+  with_items:
+    - "{{ apps }}"
+
+- name: Add User
+  user:
     name: "{{ item }}"
     shell: /bin/false
     createhome: no
@@ -19,7 +26,7 @@
 
 # Create directories
 - name: Create /etc dirs for apps
-  ansible.builtin.file:
+  file:
     path: "/etc/{{ item }}"
     state: directory
     owner: root
@@ -27,17 +34,26 @@
     mode: '0755'
   with_items:
     - "{{ apps }}"
+  when: (item != "node_exporter")
+
+- name: Create /var/lib/prometheus for other data
+  file:
+    path: /var/lib/prometheus
+    state: directory
+    owner: prometheus
+    group: prometheus
+    mode: '0744'
 
 - name: Create webhook dir for logs
-  ansible.builtin.file:
+  file:
     path: "/var/log/webhook"
     state: directory
-    owner: webhok
+    owner: webhook
     group: webhook
     mode: '0664'
 
 - name: Create repo-site
-  ansible.builtin.file:
+  file:
     path: "/var/repo-site"
     state: directory
     owner: webhook
@@ -45,15 +61,15 @@
     mode: '0664'
 
 - name: Create /opt/webhook-scripts
-  ansible.builtin.file:
-    path: "/opt/webook-scripts"
+  file:
+    path: "/opt/webhook-scripts"
     state: directory
     owner: webhook
     group: webhook
     mode: '0664'
 
 - name: Create dobrosielski.icu dir
-  ansible.builtin.file:
+  file:
     path: "/var/www/dobrosielski.icu"
     state: directory
     owner: root

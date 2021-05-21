@@ -27,6 +27,15 @@
     append: yes
   with_items:
     - "{{ apps }}"
+  when: (item != "webhook")
+
+- name: Add User
+  user:
+    name: webhook
+    shell: /bin/bash
+    createhome: no
+    groups: webhook
+    append: yes
 
 # Create directories
 - name: Create /etc dirs for apps

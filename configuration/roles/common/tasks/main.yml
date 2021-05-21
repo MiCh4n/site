@@ -6,7 +6,11 @@
     update_cache: yes
   with_items:
     - zip
-    - rsync
+    - rsync   
+
+- name: Install a .deb hugo
+  apt:
+    deb: "{{ hugo_url }}"
 
 # Add users with groups
 - name: Add system group

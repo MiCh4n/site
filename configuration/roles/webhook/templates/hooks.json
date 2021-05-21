@@ -1,7 +1,7 @@
 [
   {
     "id": "deploy-from-git-push",
-    "execute-command": "/opt/webhook-scripts/trigger-build-site.sh",
+    "execute-command": ". /opt/webhook-scripts/trigger-build-site.sh",
     "command-working-directory": "/opt/webhook-scripts",
     "trigger-rule":
     {

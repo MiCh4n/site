@@ -4,10 +4,13 @@
     name: webhook
     state: latest
 
-- name: Slurp secret
-  slurp:
-    src: /var/webhook_secret
-  register: secret
+- name: Read secret
+  shell:
+    cmd: cat /var/webhook_secret
+  register: secret_tmp
+
+- set_fact:
+    secret={{ secret_tmp.stdout }}
 
 - name: Generate hooks.json
   template:

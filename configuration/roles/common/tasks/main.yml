@@ -1,12 +1,9 @@
 ---
 - name: apt-get update && install zip/rsync
   apt:
-    name: "{{ item }}"
+    name: ['zip', 'rsync']
     state: present
-    update_cache: yes
-  with_items:
-    - zip
-    - rsync   
+    update_cache: yes 
 
 - name: Install a .deb hugo
   apt:

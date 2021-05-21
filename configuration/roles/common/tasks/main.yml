@@ -37,6 +37,14 @@
     groups: webhook
     append: yes
 
+- name: Add webhook to sudoers to reload nginx
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^webhook ALL='
+    line: 'webhook ALL=NOPASSWD: /bin/systemctl reload nginx.service'
+    validate: /usr/sbin/visudo -cf %s
+
 # Create directories
 - name: Create /etc dirs for apps
   file:
@@ -63,7 +71,7 @@
     state: directory
     owner: webhook
     group: webhook
-    mode: '0664'
+    mode: '0755'
 
 - name: Create /opt/webhook-scripts
   file:
@@ -71,7 +79,7 @@
     state: directory
     owner: webhook
     group: webhook
-    mode: '0664'
+    mode: '0755'
 
 - name: Create dobrosielski.icu dir
   file:
@@ -79,4 +87,4 @@
     state: directory
     owner: webhook
     group: root
-    mode: '0755'
+    mode: '0775'

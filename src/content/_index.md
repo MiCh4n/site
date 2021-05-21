@@ -10,6 +10,6 @@ Im hosting this website on VPS using nginx as webserver, hugo generates static h
 Grafana consumes metrics from *Prometheus* about my instance (node_exporter), and *loki* with *promtail* to show logs
 
 
-Source code is stored in github remote repository, which sends webhooks to server, then triggers script to pull repository and after that uses hugo to generate static html files which are moved to nginx site directory.
+Source code is stored in github remote repository, which sends webhooks to server, then triggers script to pull repository and after that uses hugo to generate static html files which are moved to nginx site directory
 
-Setup is made using custom ansible role to provision everything necessary to automate deployment
+Everything is provided using custom *ansible* role (nginx, deployment, prometheus, grafana, loki etc.)

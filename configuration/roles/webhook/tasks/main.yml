@@ -26,6 +26,6 @@
     dest: /etc/systemd/system/webhook.service
     owner: root
     group: root
-    mode: '0744'
+    mode: '0644'
   notify: restart webhook
 

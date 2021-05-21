@@ -35,7 +35,7 @@
     dest: /etc/systemd/system/{{ item.name }}.service
     owner: root
     group: root
-    mode: '0744'
+    mode: '0644'
   with_items:
     - "{{ items }}"
 

@@ -50,7 +50,7 @@
     dest: /etc/systemd/system/{{ item }}
     owner: root
     group: root
-    mode: '0744'
+    mode: '0644'
   with_items:
     - prometheus.service
     - node_exporter.service

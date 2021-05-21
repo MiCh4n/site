@@ -15,7 +15,7 @@ server {
 
 server {
   listen [::]:80;
-  server_name grafana.dobrosielski.icu www.grafana.dobrosielski.icu
+  server_name grafana.dobrosielski.icu www.grafana.dobrosielski.icu;
   
   access_log /var/log/nginx/grafana.dobrosielski.icu.access.log  json_analytics;
   error_log /var/log/nginx/grafana.dobrosielski.icu.error.log;
@@ -27,7 +27,7 @@ server {
 
 server {
   listen [::]:80;
-  server_name hooks.dobrosielski.icu www.hooks.dobrosielski.icu
+  server_name hooks.dobrosielski.icu www.hooks.dobrosielski.icu;
   
   access_log /var/log/nginx/hooks.dobrosielski.icu.access.log  json_analytics;
   error_log /var/log/nginx/hooks.dobrosielski.icu.error.log;

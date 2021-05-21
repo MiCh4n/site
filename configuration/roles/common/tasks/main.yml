@@ -9,6 +9,10 @@
   apt:
     deb: "{{ hugo_url }}"
 
+- name: Set timezone
+  timezone:
+    name: "{{ timezone }}"
+
 # Add users with groups
 - name: Add system group
   group:

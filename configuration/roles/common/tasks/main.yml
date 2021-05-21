@@ -1,0 +1,73 @@
+---
+- name: apt-get update && install zip/rsync
+  apt:
+    name: ['zip', 'rsync']
+    state: present
+    update_cache: yes 
+
+- name: Install a .deb hugo
+  apt:
+    deb: "{{ hugo_url }}"
+
+# Add users with groups
+- name: Add system group
+  group:
+    name: "{{ item }}"
+    system: true
+    state: present
+  with_items:
+    - "{{ apps }}"
+
+- name: Add User
+  user:
+    name: "{{ item }}"
+    shell: /bin/false
+    createhome: no
+    groups: "{{ item }}"
+    append: yes
+  with_items:
+    - "{{ apps }}"
+
+# Create directories
+- name: Create /etc dirs for apps
+  file:
+    path: "/etc/{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  with_items:
+    - "{{ apps }}"
+  when: (item != "node_exporter")
+
+- name: Create /var/lib/prometheus for other data
+  file:
+    path: /var/lib/prometheus
+    state: directory
+    owner: prometheus
+    group: prometheus
+    mode: '0744'
+
+- name: Create repo-site
+  file:
+    path: "/var/repo-site"
+    state: directory
+    owner: webhook
+    group: webhook
+    mode: '0664'
+
+- name: Create /opt/webhook-scripts
+  file:
+    path: "/opt/webhook-scripts"
+    state: directory
+    owner: webhook
+    group: webhook
+    mode: '0664'
+
+- name: Create dobrosielski.icu dir
+  file:
+    path: "/var/www/dobrosielski.icu"
+    state: directory
+    owner: webhook
+    group: root
+    mode: '0755'

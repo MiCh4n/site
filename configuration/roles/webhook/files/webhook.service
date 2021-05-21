@@ -6,7 +6,7 @@ ConditionPathExists=/etc/webhook/hooks.json
 [Service]
 User=webhook
 Group=webhook
-ExecStart=/usr/bin/webhook -nopanic -hooks /etc/webhook/hooks.json -logfile /var/log/webhook/webhooks.log
+ExecStart=/usr/bin/webhook -nopanic -hooks /etc/webhook/hooks.json
 
 [Install]
 WantedBy=multi-user.target

@@ -38,4 +38,12 @@
     mode: '0744'
   with_items:
     - "{{ items }}"
-  notify: restart loki/promtail services
+
+- name: restart loki/promtail services
+  systemd:
+    state: restarted
+    enabled: yes
+    name: "{{ item }}"
+  with_items:
+    - loki.service
+    - promtail.service

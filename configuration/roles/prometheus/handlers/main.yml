@@ -1,9 +1,0 @@
----
-- name: restart prometheus/node_exporter services
-  systemd:
-    state: restarted
-    enabled: yes
-    name: "{{ item }}"
-  with_items:
-    - prometheus.service
-    - node_exporter.service

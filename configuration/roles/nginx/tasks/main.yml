@@ -13,6 +13,11 @@
     mode: '0644'
     backup: yes
 
+- name: Delete default
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
 - name: Copy secure.conf
   copy:
     src: secure.conf
@@ -21,18 +26,18 @@
     group: root
     mode: '0644'
 
-- name: Copy dobrosielski.icu.conf
+- name: Copy dobrosielski.icu
   copy:
-    src: dobrosielski.icu.conf
-    dest: /etc/nginx/sites-available/dobrosielski.icu.conf
+    src: dobrosielski.icu
+    dest: /etc/nginx/sites-available/dobrosielski.icu
     owner: root
     group: root 
     mode: '0644'
 
 - name: Create a symbolic link to sites-enabled
   file:
-    src: /etc/nginx/sites-available/dobrosielski.icu.conf
-    dest: /etc/nginx/sites-enabled/dobrosielski.icu.conf
+    src: /etc/nginx/sites-available/dobrosielski.icu
+    dest: /etc/nginx/sites-enabled/dobrosielski.icu
     owner: root
     group: root
     state: link

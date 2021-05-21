@@ -1,5 +1,44 @@
 ---
+- name: Install f2b
+  apt:
+    name: fail2ban
+    state: latest
 
-# TODO: UFW [22, 80, webhook prob]
-# TODO: fail2ban conf
-# TODO: unattended updates&upgrades
+- name: Configure f2b
+  copy:
+    src: fail2ban.local
+    dest: /etc/fail2ban/fail2ban.local
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+  notify: restart f2b
+
+- name: Install unattended-upgrades
+  apt:
+    name: unattended-upgrades
+    state: latest
+
+- name: Configure unattended-upgrades
+  copy:
+    src: "{{ item }}"
+    dest: /etc/apt/apt.conf.d/{{ item }}
+    owner: root
+    group: root
+    mode: '0644'
+  with_items:
+    - 50unattended-upgrades
+    - 20auto-upgrades
+
+- name: Install ufw
+  apt:
+    name: ufw
+    state: latest
+
+- name: Configure UFW
+  shell:
+    cmd: "{{ item }}"
+  with_items:
+    - ufw allow 22
+    - ufw allow 80/tcp
+    - ufw logging on

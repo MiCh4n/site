@@ -1,9 +1,12 @@
 ---
-- name: apt-get update && install zip
+- name: apt-get update && install zip/rsync
   apt:
-    name: zip
+    name: "{{ item }}"
     state: present
     update_cache: yes
+  with_items:
+    - zip
+    - rsync
 
 # Add users with groups
 - name: Add system group
@@ -44,14 +47,6 @@
     group: prometheus
     mode: '0744'
 
-- name: Create webhook dir for logs
-  file:
-    path: "/var/log/webhook"
-    state: directory
-    owner: webhook
-    group: webhook
-    mode: '0664'
-
 - name: Create repo-site
   file:
     path: "/var/repo-site"
@@ -72,6 +67,6 @@
   file:
     path: "/var/www/dobrosielski.icu"
     state: directory
-    owner: root
-    group: webhook
-    mode: '0774'
+    owner: webhook
+    group: root
+    mode: '0755'

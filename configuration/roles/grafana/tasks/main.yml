@@ -15,4 +15,9 @@
     owner: root
     group: grafana
     mode: '0640'
-  notify: restart grafana
+
+- name: restart grafana
+  systemd:
+    state: restarted
+    enabled: yes
+    name: grafana-server.service

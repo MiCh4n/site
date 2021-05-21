@@ -1,10 +1,10 @@
 ---
 - name: Provision infrastructure to automatic deployment site
   hosts: all
-  remote_user: admin
+  remote_user: root
   # remote_user: user
-  become: yes
-  become_method: sudo
+  # become: yes
+  # become_method: sudo
 
   roles:
     - common
@@ -14,4 +14,5 @@
     - prometheus
     - loki
     - grafana
+    - firewall
     

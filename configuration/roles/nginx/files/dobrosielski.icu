@@ -1,7 +1,7 @@
 server {
     listen [::]:80 default_server ipv6only=on;
 
-    root /var/www/dobrosielski.icu/public_html;
+    root /var/www/dobrosielski.icu;
 
     index index.html;
 

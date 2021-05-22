@@ -10,5 +10,5 @@ I use *Hugo* to generate html from markdown files
 after I push changes to remote repository webhook is sent to VPS where I host site and triggers
 scripts to automate deployment process
 
-Everything is provided using custom *Ansible* role
+Everything is provided using custom ansible role (nginx, deployment, prometheus, grafana, loki etc.)
 ![site workflow](/site-workflow.png)

@@ -1,5 +1,6 @@
 ---
 title: "Jenkins as Code"
+description: "Everything related to store Jenkins as code"
 date: 2021-04-30T18:16:01+02:00
 draft: false
 ---

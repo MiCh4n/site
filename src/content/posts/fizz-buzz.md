@@ -1,9 +1,10 @@
 ---
 title: "Programming"
+description: "My scripts/codes etc."
 date: 2021-04-30T18:14:01+02:00
 draft: false
 ---
-Repository link → [https://github.com/MiCh4n/fizz-buzz](https://github.com/MiCh4n/programming)
+Repository link → [https://github.com/MiCh4n/programming](https://github.com/MiCh4n/programming)
 
 Here are fizzbuzzes in *[Python](https://github.com/MiCh4n/programming/blob/main/fizzbuzzes/main.py)*, *[Go](https://github.com/MiCh4n/programming/blob/main/fizzbuzzes/main.go)*, *[Bash](https://github.com/MiCh4n/programming/blob/main/fizzbuzzes/main.sh)*
 

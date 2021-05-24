@@ -1,5 +1,6 @@
 ---
 title: "K3s on Aws"
+description: "AWS infrastructure with ansible playbooks to deploy k3s"
 date: 2021-04-30T18:15:01+02:00
 draft: false
 ---

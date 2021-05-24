@@ -1,5 +1,6 @@
 ---
 title: "K8s-Sea"
+description: "Two APIs on k8s connected with Consul"
 date: 2021-04-30T18:17:01+02:00
 draft: false
 ---

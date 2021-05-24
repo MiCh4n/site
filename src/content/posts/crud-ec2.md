@@ -1,5 +1,6 @@
 ---
 title: "Crud Ec2"
+description: "3-tier Infrastructure on AWS & simple API written in Go using MongoDB"
 date: 2021-04-30T18:19:16+02:00
 draft: false
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Site"
+description: "Source code of my site and its infrastructure"
 date: 2021-04-30T18:18:01+02:00
 draft: false
 ---

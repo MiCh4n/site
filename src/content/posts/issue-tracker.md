@@ -1,5 +1,6 @@
 ---
 title: "Issue Tracker"
+description: "Simple CRUD with Authentication/Authorization"
 date: 2021-04-30T18:13:01+02:00
 draft: false
 ---

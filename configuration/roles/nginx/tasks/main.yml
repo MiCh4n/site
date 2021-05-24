@@ -4,6 +4,12 @@
     name: nginx
     state: latest
 
+- name: Add promtail to adm
+  user:
+    name: promtail 
+    groups: adm
+    append: yes
+
 - name: Copy nginx.conf
   copy:
     src: nginx.conf

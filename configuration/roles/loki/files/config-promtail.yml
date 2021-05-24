@@ -15,7 +15,7 @@ scrape_configs:
       - localhost
     labels:
       job: varlogs
-      host: f382
+      host: nginx01
       agent: promtail
       __path__: /var/log/*log
 
@@ -25,6 +25,6 @@ scrape_configs:
       - localhost
     labels:
       job: nginx
-      host: f382
+      host: nginx01
       agent: promtail
       __path__: /var/log/nginx/*log

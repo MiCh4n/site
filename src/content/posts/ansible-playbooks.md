@@ -10,3 +10,4 @@ List of my ansible playbooks:
 - [Install kubernetes learning environment](https://github.com/MiCh4n/ansible-playbooks/blob/main/k8s1.yml)
 - [Setup simple worker environment](https://github.com/MiCh4n/ansible-playbooks/blob/main/worker.yml)
 - [Role deployment site](https://github.com/MiCh4n/ansible-playbooks/tree/main/site-role)
+- [K3s playbooks](https://github.com/MiCh4n/ansible-playbooks/tree/main/k3s-ansible-playbooks)

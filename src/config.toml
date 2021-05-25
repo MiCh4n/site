@@ -17,13 +17,19 @@ pygmentsUseClasses = true
     identifier = "CV_eng"
     name = "CV_eng"
     title = "CV_eng"
-    url = "/cv_eng.pdf"
+    url = "/julian_dobrosielski_eng.pdf"
     weight = 20
   [[menu.main]]
-    identifier = "CV_pol"
-    name = "CV_pol"
-    title = "CV_pol"
-    url = "/cv_pol.pdf"
+    identifier = "CV_pl"
+    name = "CV_pl"
+    title = "CV_pl"
+    url = "/julian_dobrosielski_pl.pdf"
+    weight = 20
+  [[menu.main]]
+    identifier = "Github"
+    name = "Github"
+    title = "Github"
+    url = "https://github.com/MiCh4n"
     weight = 20
 
 [permalinks]

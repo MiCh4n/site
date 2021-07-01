@@ -1,0 +1,49 @@
+---
+- name: Download and unarchive
+  unarchive:
+    src: "{{ item.url }}"
+    dest: /tmp/
+    remote_src: yes
+  with_items:
+    - "{{ items }}"
+
+- name: Propagate loki/promtail binaries
+  copy:
+    src: /tmp/{{ item.name }}-linux-amd64
+    dest: /usr/local/bin/{{ item.name }}
+    remote_src: yes
+    owner: "{{ item.name }}"
+    group: "{{ item.name }}"
+    mode: '755'
+  with_items:
+    - "{{ items }}"
+
+
+- name: Copy loki/promtail cfg files
+  copy:
+    src: config-{{ item.name }}.yml
+    dest: /etc/{{ item.name }}/config-{{ item.name }}.yml
+    owner: "{{ item.name }}"
+    group: "{{ item.name }}"
+    mode: '0744'
+  with_items:
+    - "{{ items }}"
+
+- name: Propagate loki/promtail .service
+  copy:
+    src: "{{ item.name }}.service"
+    dest: /etc/systemd/system/{{ item.name }}.service
+    owner: root
+    group: root
+    mode: '0644'
+  with_items:
+    - "{{ items }}"
+
+- name: restart loki/promtail services
+  systemd:
+    state: restarted
+    enabled: yes
+    name: "{{ item }}"
+  with_items:
+    - loki.service
+    - promtail.service

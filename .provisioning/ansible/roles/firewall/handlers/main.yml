@@ -1,0 +1,6 @@
+---
+- name: restart f2b
+  systemd:
+    state: restarted
+    enabled: yes
+    name: fail2ban

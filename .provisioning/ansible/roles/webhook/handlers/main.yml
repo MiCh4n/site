@@ -1,6 +1,0 @@
----
-- name: restart webhook
-  systemd:
-    state: restarted
-    enabled: yes
-    name: webhook.service

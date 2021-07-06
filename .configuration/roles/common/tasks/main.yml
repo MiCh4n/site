@@ -1,0 +1,30 @@
+---
+- name: Set timezone
+  timezone:
+    name: "Poland"
+# Install docker and nomad
+- name: Install required packages
+  apt:
+    name: ['apt-transport-https', 'ca-certificates', 'curl']
+    state: latest
+    update_cache: yes
+
+- name: Add GPG keys
+  apt_key:
+    url: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ urls }}"
+
+- name: Add repositories
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ repositories }}"
+
+- name: Install software
+  apt:
+    name: ['docker-ce', 'docker-ce-cli', 'containerd.io', 'nomad']
+    state: latest
+    update_cache: yes

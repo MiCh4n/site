@@ -1,2 +1,0 @@
---- 
-apps: [webhook, prometheus, loki, promtail, node_exporter]

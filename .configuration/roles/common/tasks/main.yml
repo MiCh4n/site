@@ -1,30 +1,68 @@
 ---
 - name: Set timezone
   timezone:
-    name: "Poland"
-# Install docker and nomad
+    name: 'Poland'
+
 - name: Install required packages
   apt:
-    name: ['apt-transport-https', 'ca-certificates', 'curl']
-    state: latest
-    update_cache: yes
+    name: ['apt-transport-https', 'ca-certificates', 'curl', 'rush']
+    state: 'present'
+    update_cache: true
 
+# Install docker and nomad
 - name: Add GPG keys
   apt_key:
-    url: "{{ item }}"
-    state: present
+    url: '{{ item }}'
+    state: 'present'
   with_items:
-    - "{{ urls }}"
+    - '{{ urls }}'
 
 - name: Add repositories
   apt_repository:
     repo: "{{ item }}"
-    state: present
+    state: 'present'
   with_items:
     - "{{ repositories }}"
 
 - name: Install software
   apt:
-    name: ['docker-ce', 'docker-ce-cli', 'containerd.io', 'nomad']
-    state: latest
-    update_cache: yes
+    name: ['docker-ce', 'docker-ce-cli', 'containerd.io', 'nomad', 'rsync']
+    state: 'present'
+    update_cache: true
+
+
+# Add users and groups
+- name: Add system group
+  group:
+    name: 'SVC-gha'
+    system: true
+    state: 'present'
+
+- name: Add user for deployment
+  user:
+    name: 'SVC-gha'
+    shell: '/bin/bash'
+    createhome: true
+    groups: ['SVC-gha', 'www-data']
+    append: true
+
+- name: Generate key-pair for SVC-gha
+  openssh_keypair:
+    path: '~/.ssh/remote/svc-gha'
+    type: 'ed25519'
+  delegate_to: '127.0.0.1'
+
+- name: Set authorized key for SVC-gha
+  authorized_key:
+    user: 'SVC-gha'
+    state: 'present'
+    key: "{{ lookup('file', '~/.ssh/remote/svc-gha.pub') }}"
+    exclusive: true
+
+- name: Create dir for static files
+  file:
+    path: '/var/www/dobrosielski.icu'
+    state: 'directory'
+    owner: 'SVC-gha'
+    group: 'www-data'
+    mode: '0755'

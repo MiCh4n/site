@@ -5,7 +5,7 @@
 
 - name: Install required packages
   apt:
-    name: ['apt-transport-https', 'ca-certificates', 'curl', 'rush']
+    name: ['apt-transport-https', 'ca-certificates', 'curl', 'perl']
     state: 'present'
     update_cache: true
 
@@ -46,6 +46,34 @@
     groups: ['SVC-gha', 'www-data']
     append: true
 
+# Setup rrsync
+- name: Copy rrsync to /usr/local/bin
+  copy:
+    src: '/usr/share/doc/rsync/scripts/rrsync'
+    dest: '/usr/local/bin/rrsync'
+    owner: 'SVC-gha'
+    group: 'SVC-gha'
+    mode: '0555'
+    remote_src: true
+
+- name: Create a symbolic link of rrsync
+  file:
+    src: '/usr/local/bin/rrsync'
+    dest: '/usr/bin/rrsync'
+    owner: 'SVC-gha'
+    group: 'SVC-gha'
+    state: link
+
+# Provision directories
+- name: Create dir for static files
+  file:
+    path: '/var/www/dobrosielski.icu'
+    state: 'directory'
+    owner: 'SVC-gha'
+    group: 'www-data'
+    mode: '0755'
+
+# Create ssh keys fo SVC-gha
 - name: Generate key-pair for SVC-gha
   openssh_keypair:
     path: '~/.ssh/remote/svc-gha'
@@ -57,12 +85,5 @@
     user: 'SVC-gha'
     state: 'present'
     key: "{{ lookup('file', '~/.ssh/remote/svc-gha.pub') }}"
+    key_options: 'command="rrsync /var/www/dobrosielski.icu/"'
     exclusive: true
-
-- name: Create dir for static files
-  file:
-    path: '/var/www/dobrosielski.icu'
-    state: 'directory'
-    owner: 'SVC-gha'
-    group: 'www-data'
-    mode: '0755'

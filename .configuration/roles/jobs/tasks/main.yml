@@ -1,0 +1,13 @@
+---
+- name: Generate job
+  template:
+    src: internals.nomad
+    dest: /tmp/internals.nomad
+    owner: nomad
+    group: nomad
+    mode: '0644'
+
+- name: Run job
+  command:
+    cmd: 'nomad job run /tmp/internals.nomad'
+  changed_when: false

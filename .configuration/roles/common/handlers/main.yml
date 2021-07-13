@@ -1,6 +1,0 @@
----
-- name: restart nomad
-  systemd:
-    state: 'restarted'
-    enabled: true
-    name: 'nomad.service'

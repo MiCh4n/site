@@ -1,0 +1,7 @@
+---
+- name: Provision & configure infrastructure
+  hosts: all
+  remote_user: root
+
+  roles:
+    - common

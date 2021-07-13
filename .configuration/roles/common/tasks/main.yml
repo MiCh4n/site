@@ -50,7 +50,12 @@
     group: 'root'
     mode: '0644'
     backup: true
-  notify: 'restart nomad'
+
+- name: Enable nomad
+  systemd:
+    state: 'started'
+    enabled: true
+    name: 'nomad.service'
 
 # Add users and groups
 - name: Add system group

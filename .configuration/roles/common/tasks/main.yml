@@ -1,0 +1,92 @@
+---
+- name: Set timezone
+  timezone:
+    name: 'Poland'
+
+- name: Install required packages
+  apt:
+    name: ['apt-transport-https', 'ca-certificates', 'curl', 'perl']
+    state: 'present'
+    update_cache: true
+
+# Install docker and nomad
+- name: Add GPG keys
+  apt_key:
+    url: '{{ item }}'
+    state: 'present'
+  with_items:
+    - '{{ urls }}'
+
+- name: Add repositories
+  apt_repository:
+    repo: '{{ item }}'
+    state: 'present'
+  with_items:
+    - '{{ repositories }}'
+
+- name: Install software
+  apt:
+    name: ['docker-ce', 'docker-ce-cli', 'containerd.io', 'nomad']
+    state: 'present'
+    update_cache: true
+
+# Setup nomad
+- name: Propagate nomad config files
+  copy:
+    src: '{{ item }}'
+    dest: '/etc/nomad.d/{{ item }}'
+    owner: 'nomad'
+    group: 'nomad'
+    mode: '0700'
+    backup: true
+  with_items:
+    - '{{ nomad_cfgs }}'
+
+- name: Add nomad as service
+  copy:
+    src: 'nomad.service'
+    dest: '/etc/systemd/system/nomad.service'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+    backup: true
+  notify: 'restart nomad'
+
+# Add users and groups
+- name: Add system group
+  group:
+    name: 'SVC-gha'
+    system: true
+    state: 'present'
+
+- name: Add user for deployment
+  user:
+    name: 'SVC-gha'
+    shell: '/bin/bash'
+    createhome: true
+    groups: ['SVC-gha', 'nomad']
+    append: true
+
+- name: Copy restart script to SVC-gha home dir
+  copy:
+    src: 'restart.sh'
+    dest: '/home/SVC-gha/restart.sh'
+    owner: 'nobody'
+    group: 'nogroup'
+    mode: '0005'
+    backup: true
+
+# Create ssh keys fo SVC-gha
+- name: Generate key-pair for SVC-gha
+  openssh_keypair:
+    path: '~/.ssh/remote/svc-gha'
+    type: 'ed25519'
+  delegate_to: '127.0.0.1'
+
+- name: Set authorized key for SVC-gha
+  authorized_key:
+    user: 'SVC-gha'
+    state: 'present'
+    key: "{{ lookup('file', '~/.ssh/remote/svc-gha.pub') }}"
+    key_options: 'no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty,command="/home/SVC-gha/restart.sh"'
+    exclusive: true

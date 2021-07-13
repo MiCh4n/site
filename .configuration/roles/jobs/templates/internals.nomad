@@ -18,7 +18,7 @@ job "internals" {
         }
 
         config {
-          image = "nginx:stable-alpine"
+          image = "ghcr.io/mich4n/site:latest"
           ports = ["nginx"]
         }
     }

@@ -1,0 +1,20 @@
+---
+- name: Install haproxy
+  apt:
+    name: 'haproxy'
+    state: 'present'
+
+- name: Copy haproxy.cfg
+  copy:
+    src: 'haproxy.cfg'
+    dest: '/etc/haproxy/haproxy.cfg'
+    owner: 'root'
+    group: 'root'
+    mode: '0755'
+    backup: true
+
+- name: Restart haproxy daemon
+  systemd:
+    state: 'restarted'
+    enabled: true
+    name: 'haproxy.service'

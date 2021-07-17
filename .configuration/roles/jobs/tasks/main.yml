@@ -11,3 +11,9 @@
   command:
     cmd: 'nomad job run /tmp/internals.nomad'
   changed_when: false
+
+- name: Restart haproxy daemon
+  systemd:
+    state: 'restarted'
+    enabled: true
+    name: 'haproxy.service'

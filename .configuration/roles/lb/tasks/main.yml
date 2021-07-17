@@ -12,9 +12,3 @@
     group: 'root'
     mode: '0755'
     backup: true
-
-- name: Restart haproxy daemon
-  systemd:
-    state: 'restarted'
-    enabled: true
-    name: 'haproxy.service'

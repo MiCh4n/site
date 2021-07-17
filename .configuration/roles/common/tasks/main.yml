@@ -3,6 +3,12 @@
   timezone:
     name: 'Poland'
 
+- name: Set MOTD to latest usage of this role
+  copy:
+    content: "Timestamp: {{ ansible_date_time.date, ansible_date_time.time, ansible_date_time.tz }}\nIso8601:   ('{{ ansible_date_time.iso8601 }}')\n"
+    dest: '/etc/motd'
+    remote_src: true
+
 - name: Install required packages
   apt:
     name: ['apt-transport-https', 'ca-certificates', 'curl', 'perl']

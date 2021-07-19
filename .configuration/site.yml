@@ -7,3 +7,8 @@
     - common
     - lb
     - jobs
+    - firewall
+
+  tasks:
+  - name: Reboot machine
+    reboot:

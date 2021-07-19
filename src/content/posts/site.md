@@ -6,10 +6,10 @@ draft: false
 ---
 Repository link → [https://github.com/MiCh4n/site](https://github.com/MiCh4n/site)
 
-Here is source code of my website :)
-I use *Hugo* to generate html from markdown files
-after I push changes to remote repository webhook is sent to VPS where I host site and triggers
-scripts to automate deployment process
+This repository contains how I manage my website. 
 
-Everything is provided using custom ansible role (nginx, deployment, prometheus, grafana, loki etc.)
-![site workflow](/site-workflow.png)
+*Github Actions* are used as CI/CD to build and publish custom docker image (*nginx alpine + static files built with hugo*) in github packages. *Nomad* is responsible for workload in vps (*debian 10*), keeps eye on "nginx" and *promtail* containers. 
+
+Everything is behind reverse proxy (*haproxy*) and with simple custom firewall in nftables
+
+![site workflow](/nomad_diagram.png)

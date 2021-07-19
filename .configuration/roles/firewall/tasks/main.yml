@@ -1,7 +1,7 @@
 ---
 - name: Install firewall software
   apt:
-    name: ['nftables']
+    name: ['nftables', 'fail2ban', 'unattended-upgrades']
     state: 'present'
     update_cache: true
 
@@ -13,3 +13,23 @@
     group: 'root'
     mode: '0755'
     backup: true
+
+- name: Configure f2b
+  copy:
+    src: 'fail2ban.local'
+    dest: '/etc/fail2ban/fail2ban.local'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+    backup: true
+
+- name: Configure unattended-upgrades
+  copy:
+    src: "{{ item }}"
+    dest: '/etc/apt/apt.conf.d/{{ item }}'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  with_items:
+    - 50unattended-upgrades
+    - 20auto-upgrades

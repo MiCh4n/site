@@ -3,7 +3,7 @@ title: "Julian Dobrosielski"
 date: 2021-04-14T16:40:38Z
 draft: false
 ---
-Another random portfolio site but this time in ♾*DevOps*♾ flavour anyway I hope to get that job.
+Another random portfolio site but this time in ♾*DevOps*♾ flavour.
 
 I understand position which for some doesn't exit but somehow is existing as tools, practices, mindset etc. to achieve ultimate goal which is to deliver faster and better software to production. Thats my understanding for what purpose DevOps position exist.
 

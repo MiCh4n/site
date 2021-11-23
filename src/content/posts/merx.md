@@ -1,5 +1,5 @@
 ---
-title: "Merx [WIP]"
+title: "Merx [PAUSED]"
 description: "Text chatroom built on kubernetes"
 date: 2021-04-30T18:19:16+02:00
 draft: false

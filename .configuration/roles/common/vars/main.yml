@@ -1,4 +1,0 @@
----
-urls: ['https://download.docker.com/linux/debian/gpg', 'https://apt.releases.hashicorp.com/gpg']
-repositories: ['deb https://download.docker.com/linux/debian buster stable', 'deb https://apt.releases.hashicorp.com buster main']
-nomad_cfgs: ['nomad.hcl', 'server.hcl', 'client.hcl']
